@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+:root {
+	/* pastel color tones */
+	--color-thistle: #e0bbe4;
+	--color-lavender-purple: #957dad;
+	--color-pastel-violet: #d291bc;
+	--color-cotton-candy: #fec8d8;
+	--color-lumber: #ffdfd3;
+
+	/* digitally creative */
+	--color-rajah: #fab861;
+	--color-atomic-tangerine: #ff9061;
+	--color-metallic-blue: #3e4e7a;
+	--color-pacific-blue: #16a8cc;
+	--color-magic-mint: #a9e8cf;
+	--color-magic-mint-darker: #76A291;
+
+	--drop-shadow: drop-shadow(3px 3px 4px #555f);
+
+	--range-slider: var(--color-rajah);
+	--range-handle-inactive: var(--color-pacific-blue);
+	--range-handle: var(--color-pacific-blue);
+	--range-handle-focus: var(--color-pacific-blue);
+}
+
+* {
+	font-family: 'Varela Round';
+	color: var(--color-metallic-blue);
+}
+
+html {
+	_height: 100%;
+}
+
+body {
+	_height: 100%;
+	_margin: 0;
+	background: no-repeat linear-gradient(var(--color-magic-mint) 80%, var(--color-magic-mint-darker));
+	background-attachment: fixed;
+}
+
+.row {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.rangeSlider {
+	flex: 100%;
+}
+
