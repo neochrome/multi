@@ -29,24 +29,16 @@
 	color: var(--color-metallic-blue);
 }
 
-html {
-	_height: 100%;
-}
-
 body {
-	_height: 100%;
-	_margin: 0;
+	margin: 10px;
 	background: no-repeat linear-gradient(var(--color-magic-mint) 80%, var(--color-magic-mint-darker));
 	background-attachment: fixed;
 }
 
-.row {
+.flex {
 	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
 }
 
-.rangeSlider {
-	flex: 100%;
+.grid {
+	display: grid;
 }
-

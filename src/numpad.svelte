@@ -21,7 +21,7 @@ function handleEnter() {
 </script>
 
 <Frame>
-  <div class="numpad row">
+  <div class="numpad grid">
     <div class="input">{input.join('')}</div>
     {#each digits as digit}
       <button on:click={() => handleDigit(digit)}>{digit}</button>
@@ -34,7 +34,8 @@ function handleEnter() {
 
 <style>
   .numpad {
-    gap: 10px;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   button {
     font-size: 4em;
@@ -43,13 +44,11 @@ function handleEnter() {
     background-color: var(--color-pacific-blue);
     color: white;
     filter: var(--drop-shadow);
-    position: relative;
-    flex: 25%;
     aspect-ratio: 1 / 1;
   }
   .input {
+    grid-column: 1 / span 3;
     font-size: 4em;
-    flex: 100%;
     text-align: right;
     border: 2px solid var(--color-metallic-blue);
     border-radius: 5px;

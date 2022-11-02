@@ -54,8 +54,9 @@ function nextNumbers() {
 
 </script>
 
+<div class="in-game flex">
 {#if gameOver}
-  <Frame title="Tiden UTE!!">
+  <Frame title="Tiden är UTE!!">
     <h3>Din poäng: {score}</h3>
     <h3>Du svarade rätt {correctCount} gånger</h3>
     <h3>Du svarade <strong>fel</strong> {count - correctCount} gånger</h3>
@@ -70,18 +71,25 @@ function nextNumbers() {
         <span class="multiplier">+{scoreMultiplier}</span>
       {/if}
     </div>
-    <Button on:click={() => onGameOver()} slot="footer">avbryt</Button>
+    <Button danger on:click={() => onGameOver()} slot="footer">avbryt</Button>
   </Frame>
   <Numpad onEnter={handleEnter} />
 {/if}
+</div>
 
 <style>
-  .timer {
-    flex: 100%;
-    margin-bottom: 10px;
+  .in-game {
+    flex-direction: row;
+    align-items: flex-start;
   }
-  .stats, h3 {
-    flex: 100%;
+  @media (max-width: 768px) { 
+    .in-game {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  .timer {
+    margin-bottom: 10px;
   }
   h3 {
     margin: 0;

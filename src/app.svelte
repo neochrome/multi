@@ -10,7 +10,7 @@ let duration = 0;
 let tables = [1,10];
 
 function play(time) {
-  duration = time * 10;// * 60;
+  duration = time * 60;
   isPlaying = true;
 }
 
@@ -21,12 +21,12 @@ function onGameOver(score) {
 
 </script>
 
-<main class="row">
+<main class="flex">
   {#if isPlaying}
     <InGame {tables} {duration} {onGameOver} />
   {:else}
-    <Frame title="Spela">
-      <div class="row">
+    <Frame title="Öva">
+      <div>
         <RangeSlider
           bind:values={tables}
           min={1}
@@ -37,7 +37,7 @@ function onGameOver(score) {
           pushy
         />
       </div>
-      <div class="row">
+      <div class="actions grid" slot="footer">
         <Button on:click={() => play(1)}>1 min</Button>
         <Button on:click={() => play(3)}>3 min</Button>
         <Button on:click={() => play(5)}>5 min</Button>
@@ -48,10 +48,17 @@ function onGameOver(score) {
 
 <style>
   main {
+    flex-direction: column;
     max-width: 80%;
     margin: auto;
   }
-  div {
-    flex: 100%;
+  @media (max-width: 768px) { 
+    main {
+      max-width: 70%;
+    }
+  }
+  div.actions {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
   }
 </style>
