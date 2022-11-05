@@ -30,7 +30,7 @@
 }
 
 body {
-	margin: 10px;
+	margin: 0;
 	background: no-repeat linear-gradient(var(--color-magic-mint) 80%, var(--color-magic-mint-darker));
 	background-attachment: fixed;
 }
@@ -41,4 +41,28 @@ body {
 
 .grid {
 	display: grid;
+}
+
+section.frame {
+	border: 5px solid var(--color-rajah);
+	border-radius: 5px;
+	background-color: white;
+	margin: 10px;
+	box-shadow: inset 1px 1px 2px 0 #8888;
+	filter: var(--drop-shadow);
+	padding: 10px;
+}
+
+section.frame h1 {
+	margin: 0 0 10px 0;
+	text-align: center;
+}
+
+.t-l { font-size: 4vw; }
+.t-m { font-size: 2vw; }
+.t-s { font-size: 1vw; }
+@media screen and (orientation: portrait) {
+	.t-l { font-size: 4vh; }
+	.t-m { font-size: 2vh; }
+	.t-s { font-size: 1vh; }
 }

@@ -1,8 +1,7 @@
 <script>
-import Frame from './frame.svelte';
 </script>
 
-<Frame title="Topplista">
+<section>
     <div>
       <h3>1 minut</h3>
       <ul>
@@ -30,7 +29,7 @@ import Frame from './frame.svelte';
       </ul>
     </div>
 
-</Frame>
+</section>
 
 <style>
   div {

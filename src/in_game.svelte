@@ -1,7 +1,6 @@
 <script>
 import Numpad from './numpad.svelte';
 import Timer from './timer.svelte';
-import Frame from './frame.svelte';
 import Button from './button.svelte';
 
 import { rnd, range } from './utils';
@@ -54,48 +53,76 @@ function nextNumbers() {
 
 </script>
 
-<div class="in-game flex">
+<div class="in-game">
 {#if gameOver}
-  <Frame title="Tiden är UTE!!">
-    <h3>Din poäng: {score}</h3>
-    <h3>Du svarade rätt {correctCount} gånger</h3>
-    <h3>Du svarade <strong>fel</strong> {count - correctCount} gånger</h3>
+  <section class="frame">
+    <h1 class="t-l">Tiden är UTE!!</h1>
+    <div class="t-m">Din poäng: {score}</div>
+    <div class="t-m">Du svarade rätt {correctCount} gånger</div>
+    <div class="t-m">Du svarade <strong>fel</strong> {count - correctCount} gånger</div>
     <Button on:click={() => onGameOver(score)} slot="footer">tillbaka</Button>
-  </Frame>
+  </section>
 {:else}
-  <Frame title="Vad blir {a} x {b} ?">
-    <div class="timer"><Timer {duration} {onTimeout} /></div>
-    <div class="stats">
+  <section class="frame">
+    <h1 class="t-l">Vad blir {a} x {b} ?</h1>
+    <div class="timer t-m"><Timer {duration} {onTimeout} /></div>
+    <div class="stats t-m">
       <span class="score">Poäng: {score}</span>
       {#if scoreMultiplier > 1 }
         <span class="multiplier">+{scoreMultiplier}</span>
       {/if}
     </div>
-    <Button danger on:click={() => onGameOver()} slot="footer">avbryt</Button>
-  </Frame>
-  <Numpad onEnter={handleEnter} />
+    <Button danger on:click={() => onGameOver()}>avbryt</Button>
+  </section>
+  <section class="frame numpad">
+    <Numpad onEnter={handleEnter} />
+  </section>
 {/if}
 </div>
 
 <style>
   .in-game {
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
   }
-  @media (max-width: 768px) { 
+  .frame { flex: auto; }
+  .frame.numpad { flex: 1; }
+
+  @media (min-width: 568px) and (max-width: 657px) {
+    .frame.numpad { flex: 1.5; }
+  }
+  @media (min-width: 658px) and (max-width: 666px) {
+    .frame.numpad { flex: 1; }
+  }
+  @media (min-width: 667px) and (max-width: 895px) {
+    .frame.numpad { flex: 1.5; }
+  }
+  @media (min-width: 896px) and (max-width: 1023px) {
+    .frame.numpad { flex: 1; }
+  }
+  @media (min-width: 1024px) and (max-width: 1137px) {
+    .frame.numpad { flex: 4; }
+  }
+  @media (min-width: 1138px) and (max-width: 1179px) {
+    .frame.numpad { flex: 2; }
+  }
+  @media (min-width: 1180px) {
+    .frame.numpad { flex: 3; }
+  }
+
+  @media (orientation: portrait) { 
     .in-game {
       flex-direction: column;
       align-items: stretch;
     }
+    .frame { flex: 1 }
   }
+
   .timer {
     margin-bottom: 10px;
   }
-  h3 {
-    margin: 0;
-  }
   .score {
-    font-size: 1.5em;
     font-weight: bold;
   }
   .multiplier {

@@ -2,13 +2,12 @@
   export let danger = false;
 </script>
 
-<button on:click class:danger>
+<button class="t-m" on:click class:danger>
   <slot></slot>
 </button>
 
 <style>
   button {
-    font-size: 20px;
     border: 2px solid var(--color-metallic-blue);
     border-radius: 5px;
     background-color: var(--color-pacific-blue);

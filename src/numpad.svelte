@@ -1,5 +1,4 @@
 <script>
-import Frame from './frame.svelte';
 export let onEnter;
 const digits = [1,2,3,4,5,6,7,8,9];
 let input = [];
@@ -20,17 +19,15 @@ function handleEnter() {
 }
 </script>
 
-<Frame>
-  <div class="numpad grid">
-    <div class="input">{input.join('')}</div>
-    {#each digits as digit}
-      <button on:click={() => handleDigit(digit)}>{digit}</button>
-    {/each}
-    <button on:click={() => clear()}>C</button>
-    <button on:click={() => handleDigit(0)}>0</button>
-    <button on:click={() => handleEnter()}>⏎</button>
-  </div>
-</Frame>
+<div class="numpad grid">
+  <div class="input t-l">{input.join('')}</div>
+  {#each digits as digit}
+    <button class="t-l" on:click={() => handleDigit(digit)}>{digit}</button>
+  {/each}
+  <button class="t-l" on:click={() => clear()}>C</button>
+  <button class="t-l" on:click={() => handleDigit(0)}>0</button>
+  <button class="t-l" on:click={() => handleEnter()}>⏎</button>
+</div>
 
 <style>
   .numpad {
@@ -38,17 +35,15 @@ function handleEnter() {
     grid-template-columns: 1fr 1fr 1fr;
   }
   button {
-    font-size: 4em;
     border: 2px solid var(--color-metallic-blue);
     border-radius: 5px;
     background-color: var(--color-pacific-blue);
     color: white;
     filter: var(--drop-shadow);
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
   }
   .input {
     grid-column: 1 / span 3;
-    font-size: 4em;
     text-align: right;
     border: 2px solid var(--color-metallic-blue);
     border-radius: 5px;
