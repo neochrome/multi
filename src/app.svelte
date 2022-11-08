@@ -25,7 +25,7 @@ function onGameOver(score) {
     <InGame {tables} {duration} {onGameOver} />
   {:else}
     <section class="frame">
-      <h1 class="t-l">Öva</h1>
+      <h1 class="t-l">Välj tabeller och tid</h1>
       <div>
         <RangeSlider
           bind:values={tables}

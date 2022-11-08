@@ -26,6 +26,7 @@ let correctCount = 0;
 let score = 0;
 let scoreMultiplier = 1;
 let gameOver = false;
+let incorrect = false;
 
 let a,b,correctAnswer;
 nextNumbers();
@@ -33,14 +34,20 @@ nextNumbers();
 function handleEnter(answer) {
   count++;
   if (answer === correctAnswer) {
-    console.log('correct');
     correctCount++;
     score += scoreMultiplier++;
   } else {
-    console.log('incorrect');
     scoreMultiplier = 1;
+    indicateIncorrect();
   }
   nextNumbers();
+}
+
+function indicateIncorrect() {
+  incorrect = true;
+  setTimeout(() => {
+    incorrect = false;
+  }, 500);
 }
 
 function onTimeout() {
@@ -53,7 +60,7 @@ function nextNumbers() {
 
 </script>
 
-<div class="in-game">
+<div class="in-game" class:incorrect>
 {#if gameOver}
   <section class="frame">
     <h1 class="t-l">Tiden är UTE!!</h1>
@@ -86,6 +93,10 @@ function nextNumbers() {
     flex-direction: row;
     align-items: flex-start;
   }
+  .in-game.incorrect {
+    background-color: red;
+  }
+
   .frame { flex: auto; }
   .frame.numpad { flex: 1; }
 
